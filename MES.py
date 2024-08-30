@@ -9,12 +9,13 @@ class MES:
         pass
 
 
-    def get_product_line(self, name):
+    def get_production_line(self, name) -> ProductionLine:
         pass
 
 
     def create_production_order(self, production_line_name, order_number, product_name, quantity):
-        pass
+        production_line = self.get_production_line(production_line_name)
+        production_line.create_order(order_number, product_name, quantity)
 
 
     def start_production_order(self, production_line_name, order_number):
