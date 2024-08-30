@@ -6,6 +6,7 @@ class MES:
 
 
     def add_production_line(self, name):
+        self.__production_lines += ProductionLine.__init__(self,name)
         pass
 
 
