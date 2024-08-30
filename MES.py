@@ -4,7 +4,7 @@ class MES:
     def __init__(self):
         self.__production_lines = []
 
-#sksa
+
     def add_production_line(self, name):
         pass
 
