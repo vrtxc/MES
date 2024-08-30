@@ -1,7 +1,8 @@
+from production_line import ProductionLine
 
 class MES:
     def __init__(self):
-        pass
+        self.__production_lines = []
 
 
     def add_production_line(self, name):
