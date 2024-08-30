@@ -2,7 +2,7 @@ from production_line import ProductionLine
 
 class MES:
     def __init__(self):
-        self.__production_lines = []
+        self.__production_lines: list[ProductionLine] = []
 
 
     def add_production_line(self, name):
@@ -10,7 +10,12 @@ class MES:
 
 
     def get_production_line(self, name) -> ProductionLine:
-        pass
+        for line in self.__production_lines:
+            if line.get_product_name() == name:
+                return line
+
+        return "not found"
+
 
 
     def create_production_order(self, production_line_name, order_number, product_name, quantity):
