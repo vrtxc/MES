@@ -1,34 +1,45 @@
+from production_order import ProductionOrder
 
 class ProductionLine:
     
-    
     def __init__(self, name):
         self.__name: str = name
-        self.__order_number: int
-        self.__product_name: str
-        self.__quantity: int
+        self.__orders: list = []
     
 
-    def create_order(self, order_number, product_name, quantity):
-        pass
+    def add_order(self, order_number, product_name, quantity):
+        self.__orders.append(
+            ProductionOrder(order_number, product_name, quantity)
+        )
+
+
+    def get_production_line_name(self):
+        return self.__name
+    
+
+    def get_orders(self):
+        return self.__orders
 
 
     def start_order(self, order_number):
-        pass
+        order = self.get_order_by_order_number(order_number)
+
+        if not order:
+            return
+        
+        order.start()
 
 
     def finish_order(self, order_number):
-        pass
+        order = self.get_order_by_order_number(order_number)
 
+        if not order:
+            return
+        
+        order.finish()
+    
 
-    def get_name(self):
-        return self.__name
-    
-    def get_order_number(self):
-        return self.__order_number
-    
-    def get_product_name(self):
-        return self.__product_name
-    
-    def get_quantity(self):
-        return self.__quantity
+    def get_order_by_order_number(self, order_number):
+        for order in self.__orders:
+            if order.get_order_number() == order_number:
+                return order
