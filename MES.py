@@ -1,8 +1,11 @@
 from production_line import ProductionLine
+from production_order import ProductionOrder
+
 
 class MES:
     def __init__(self):
         self.__production_lines: list[ProductionLine] = []
+        self.production_orders: list[ProductionOrder] = []
 
 
     def add_production_line(self, name):
@@ -13,22 +16,22 @@ class MES:
         for line in self.__production_lines:
             if line.get_product_name() == name:
                 return line
-
         return "not found"
 
 
 
-    def create_production_order(self, production_line_name, order_number, product_name, quantity):
-        production_line = self.get_production_line(production_line_name)
-        production_line.create_order(order_number, product_name, quantity)
-
+    def create_production_order(self, production_line_name, order_number:int):
+        self.production_orders.append(ProductionOrder(order_number))
+        print("production order created")
 
     def start_production_order(self, production_line_name, order_number):
-        pass
+        ProductionLine.start_order(order_number)
+        print("production order started")
 
 
     def finish_production_order(self, production_line_name, order_number):
-        pass
+        ProductionLine.finish_order(order_number)
+        print("production order finished")
 
 
     
