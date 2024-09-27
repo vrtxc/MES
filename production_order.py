@@ -40,5 +40,3 @@ class ProductionOrder:
         return self.efficiency
     
     
-ProductionOrder_1 = ProductionOrder(1, 'Robot', 4)
-ProductionOrder_1.start()
