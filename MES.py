@@ -5,7 +5,6 @@ from production_order import ProductionOrder
 class MES:
     def __init__(self):
         self.__production_lines: list[ProductionLine] = []
-        self.production_orders: list[ProductionOrder] = []
 
 
     def add_production_line(self, name):
@@ -20,8 +19,9 @@ class MES:
 
 
 
-    def create_production_order(self, production_line_name, order_number:int):
-        self.production_orders.append(ProductionOrder(order_number))
+    def create_production_order(self, production_line_name, order_number:int, product_name, quantity):
+        production_line = self.get_production_line(production_line_name)
+        production_line.add_order(order_number, product_name, quantity)        
         print("production order created")
 
     def start_production_order(self, production_line_name, order_number):
