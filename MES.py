@@ -25,12 +25,14 @@ class MES:
         print("production order created")
 
     def start_production_order(self, production_line_name, order_number):
-        ProductionLine.start_order(order_number)
+        production_line = self.get_production_line(production_line_name)
+        production_line.start_order(order_number)
         print("production order started")
 
 
     def finish_production_order(self, production_line_name, order_number):
-        ProductionLine.finish_order(order_number)
+        production_line = self.get_production_line(production_line_name)
+        production_line.finish_order(order_number)
         print("production order finished")
 
 
