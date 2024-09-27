@@ -17,7 +17,7 @@ class MES:
 
     def get_production_line(self, name: str) -> ProductionLine:
         for line in self.__production_lines:
-            if line.get_product_name() == name:
+            if line.get_production_line_name() == name:
                 return line
         return "not found"
 
@@ -54,5 +54,10 @@ class MES:
         production_line.finish_order(order_number)
         print("production order finished")
 
+test = MES()
+test.add_production_line('test')
+test.get_production_line('test')
+test.create_production_order('test', 12, 'root', 10)
+test.start_production_order('test', 12)
 
     
